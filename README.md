@@ -6,7 +6,7 @@ The system collects environmental data from the DHT22 sensor, sends it through E
 
 ## Live Demo
 
-https://temperature-sensor-e1f27.web.app/
+https://temp-sensor-1ed8d.web.app/
 
 ## Project Architecture
 
@@ -126,7 +126,7 @@ The web dashboard is deployed using Firebase Hosting.
 
 Live deployment:
 
-https://temperature-sensor-e1f27.web.app/
+https://temp-sensor-1ed8d.web.app/
 
 ## Project Outcome
 
@@ -149,7 +149,7 @@ It combines embedded systems, IoT communication, cloud services, authentication,
 
 ## Author
 
-Nalinkumar K
+NalinKumar K
 
 ## License
 
