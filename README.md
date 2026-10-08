@@ -1,8 +1,8 @@
 # ESP32 + DHT22 IoT Environment Monitor
 
-An IoT-based temperature and humidity monitoring system using ESP32, DHT22, Firebase Realtime Database, and a responsive web dashboard.
+An IoT-based temperature and humidity monitoring system using ESP32, DHT22, Firebase Realtime Database, Firebase Authentication, and a responsive web dashboard.
 
-The system collects environmental data from the DHT22 sensor, sends it through ESP32 over Wi-Fi to Firebase, and displays the data on a web dashboard in real time.
+The system collects environmental data from the DHT22 sensor, sends it through the ESP32 over Wi-Fi to Firebase, and displays the data on a password-protected web dashboard.
 
 ## Live Demo
 
@@ -35,8 +35,8 @@ https://temp-sensor-1ed8d.web.app/
 
 ### Cloud
 
-- Firebase Authentication
 - Firebase Realtime Database
+- Firebase Authentication
 - Firebase Hosting
 
 ### Web
@@ -61,27 +61,37 @@ Web Dashboard
 ## Working Principle
 
 1. The DHT22 measures temperature and relative humidity.
-2. ESP32 reads the sensor values.
-3. ESP32 connects to the internet through Wi-Fi.
+2. The ESP32 reads the sensor values.
+3. The ESP32 connects to the internet through Wi-Fi.
 4. Sensor data is transmitted to Firebase Realtime Database.
 5. Firebase stores the incoming measurements.
-6. The web dashboard retrieves the data.
-7. Temperature and humidity are displayed in real time.
-8. Historical measurements can be visualized using a graph.
+6. Firebase Authentication verifies the dashboard user.
+7. After successful authentication, the web dashboard retrieves the sensor data.
+8. Temperature and humidity are displayed on the dashboard.
+9. Historical measurements are visualized using a graph.
 
 ## Web Dashboard
 
 The dashboard provides:
 
-- Real-time temperature monitoring
-- Real-time humidity monitoring
+- Temperature monitoring
+- Humidity monitoring
 - Historical data visualization
 - Firebase connection status
 - Sensor status
 - Last updated information
-- Responsive interface
+- Responsive web interface
+- Password-protected access
 
 ![Web Dashboard](images/dashboard.png)
+
+## Dashboard Authentication
+
+The web dashboard uses Firebase Authentication.
+
+Users must provide valid Firebase authentication credentials to access the monitoring dashboard.
+
+The actual password is intentionally not published in this repository.
 
 ## Firebase Database
 
@@ -89,20 +99,15 @@ Firebase Realtime Database is used as the cloud backend for storing sensor measu
 
 ![Firebase Database](images/firebase.png)
 
-## Firebase Authentication
-
-Firebase Authentication is used to control access to the monitoring dashboard and database.
-
-The Realtime Database is configured to allow authenticated users to read and write sensor data.
-
 ## Project Components
 
 | Component | Purpose |
 |---|---|
 | DHT22 | Measures temperature and humidity |
 | ESP32 | Reads sensor data and provides Wi-Fi connectivity |
-| Firebase RTDB | Stores sensor measurements |
-| Firebase Authentication | Provides user authentication |
+| Firebase Realtime Database | Stores sensor measurements |
+| Firebase Authentication | Authenticates dashboard users |
+| Firebase Hosting | Hosts the web dashboard |
 | Web Dashboard | Displays sensor data |
 | Chart.js | Visualizes historical measurements |
 
@@ -110,15 +115,17 @@ The Realtime Database is configured to allow authenticated users to read and wri
 
 The system was tested for:
 
-- DHT22 sensor readings
+- DHT22 temperature readings
+- DHT22 humidity readings
 - ESP32 Wi-Fi connectivity
 - Firebase connectivity
-- Database data updates
+- Firebase database updates
+- Firebase authentication
 - Web dashboard updates
 - Historical graph visualization
-- Authentication
+- Dashboard sign-out functionality
 
-The DHT22 successfully provided temperature and humidity measurements, while the ESP32 transmitted the data to Firebase for visualization through the web dashboard.
+The DHT22 successfully provided temperature and humidity measurements, while the ESP32 transmitted the data to Firebase for visualization through the authenticated web dashboard.
 
 ## Deployment
 
@@ -134,18 +141,19 @@ The project demonstrates an end-to-end IoT monitoring pipeline:
 
 Physical Sensor → Embedded System → Internet → Cloud Database → Web Application
 
-It combines embedded systems, IoT communication, cloud services, authentication, database management, and web development into a single working system.
+It combines embedded systems, sensor interfacing, IoT communication, cloud database integration, authentication, and web development into a single working system.
 
 ## Future Improvements
 
-- Add multiple sensors
-- Add automatic alerts for abnormal temperature/humidity
-- Add mobile-friendly notifications
+- Add multiple environmental sensors
+- Add automatic alerts for abnormal temperature and humidity
+- Add mobile notifications
 - Add data export functionality
-- Add more advanced analytics
+- Add advanced data analytics
 - Add long-term environmental data storage
 - Add OTA firmware updates
 - Add additional IoT sensors
+- Add improved user and access management
 
 ## Author
 
